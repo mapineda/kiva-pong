@@ -1,10 +1,10 @@
-# Kiva-Pong
+# Kivy-Pong
 
-Pong application built using kiva and python.
+Pong application built using kivy and python.
 
 ## FAQs
 
-### Why Kiva?
+### Why Kivy?
 
 ### Why Pong?
 

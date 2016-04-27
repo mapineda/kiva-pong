@@ -1,5 +1,5 @@
-from kiva.app import app
-from kiva.iux.widget import Widget
+from kivy.app import App
+from kivy.uix.widget import Widget
 
 class PongGame(Widget):
     pass
