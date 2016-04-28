@@ -1,4 +1,4 @@
-#It’s required that the base Class of your Kivy App inherits from the App class
+#It is required that the base Class of your Kivy App inherits from the App class
 #The uix module is the section that holds the user interface elements like layouts and widgets.
 from kivy.app import App
 from kivy.uix.widget import Widget
