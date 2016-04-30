@@ -2,9 +2,12 @@
 #The uix module is the section that holds the user interface elements like layouts and widgets.
 from kivy.app import App
 from kivy.uix.widget import Widget
-#add imports from property class and vector
-from kivy.property import NumericProperty, ReferenceListProperty
+#import properties and vector
+from kivy.properties import NumericProperty, ReferenceListProperty, ObjectProperty
 from kivy.vector import Vector
+# import clock and randomint
+from kivy.clock import Clock
+from random import randint
 
 
 
@@ -25,12 +28,31 @@ class PongBall(Widget):
         self.pos = Vector(*self.velocity) + self.pos
 
 class PongGame(Widget):
-    pass
+    ball = ObjectProperty(None)
+
+    def serve_ball(self):
+        self.ball.center = self.center
+        self.ball.velocity = Vector(4,0).rotate(randint(0,360))
+
+    def update(self, dt):
+        self.ball.move()
+
+        #bounce ball off top and bottom
+        if (self.ball.y < 0) or (self.ball.top > self.height):
+            self.ball.velocity_y *= -1
+        #bounce ball of left and right
+        if (self.ball.x < 0) or (self.ball.right > self.widht):
+            self.ball.velocity_x += -1
+
 #define base Class for kivy app
 #function initializes and returns the Root Widget
 class PongApp(App):
     def build(self):
-        return PongGame()
+        game = PongGame()
+        game.serve_ball()
+        Clock.schedule_interval(game.update, 1.0 / 6.0)
+        return game
+
 #here the class PongApp is initialized and its run() method called. This initializes and starts our Kivy application.
 if __name__ == '__main__':
     PongApp().run()
