@@ -4,7 +4,7 @@ Pong application built using kivy and python.
 
 ## Getting Started
 1. Clone the Repo
-2. run
+2. run:
 ```
 python main.py
 ```
